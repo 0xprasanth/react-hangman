@@ -24,19 +24,37 @@ const BODY = (
 );
 
 const RIGHT_HAND = (
-  <div
-    className=" absolute w-[100px] h-[10px] bg-black  -rotate-[30deg]  top-[150px] right-[-100px]  origin-bottom-left"
-
-  />
+  <div className=" absolute w-[100px] h-[10px] bg-black  -rotate-[30deg]  top-[125px] right-[-100px]  origin-bottom-left" />
 );
 
-const HangmanDrawing = () => {
+const LEFT_HAND = (
+  <div className=" absolute w-[100px] h-[10px] bg-black   top-[125px] right-[10px]  origin-bottom-right rotate-[30deg] " />
+);
+
+const RIGHT_LEG = (
+  <div className="absolute w-[100px] h-[10px] bg-black  rotate-[60deg]  top-[200px] right-[-89px]  origin-bottom-left" />
+);
+const LEFT_LEG = (
+  <div className="absolute w-[100px] h-[10px] bg-black 
+  rotate-[-60deg]  top-[200px] right-[0px]  origin-bottom-right" />
+);
+
+const BODY_PARTS = [
+  HEAD, BODY,
+  RIGHT_HAND, LEFT_HAND,
+  RIGHT_LEG, LEFT_LEG
+]
+
+type HangmanDrawingProps = {
+  numberOfGuess: number
+}
+const HangmanDrawing = ({ numberOfGuess }: HangmanDrawingProps) => {
   // Static drawing
   return (
     <div className=" relative ">
-      {HEAD}
-      {BODY}
-      {RIGHT_HAND}
+      {
+        BODY_PARTS.slice(0, numberOfGuess)
+      }
       {/* h bar */}
       <div
         className=" absolute h-11 bg-black  top-0 right-0"
