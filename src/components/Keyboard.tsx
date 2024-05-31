@@ -30,12 +30,14 @@ const KEYS = [
   "Z",
 ];
 type KeyboardProps = {
+  disabled: boolean,
   activeLetters: string[],
   inactiveLetters: string[],
   addGuessedLetter: (letter: string) => void
 }
 
 const Keyboard = ({
+  disabled=false,
   activeLetters,
   inactiveLetters,
   addGuessedLetter
@@ -56,7 +58,7 @@ const Keyboard = ({
           <button
             onClick={() => addGuessedLetter(key)}
             key={key}
-            disabled={isInactive || isActive}
+            disabled={isInactive || isActive || disabled}
             className={`w-full border-black border-4 text-4xl p-2 font-bold cursor-pointer text-black aspect-square 
             ${style.btn}
             ${isActive ? style.active : "" }
