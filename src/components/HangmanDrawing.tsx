@@ -1,4 +1,3 @@
-import React from "react";
 
 // drawing HEAD
 const HEAD = (
