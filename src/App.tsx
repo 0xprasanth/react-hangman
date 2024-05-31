@@ -8,7 +8,7 @@ import Keyboard from "./components/Keyboard";
 const App = () => {
   const [wordToGuess, setWordToGuess] = useState(() => {
     // function to get random word from list
-    return words[Math.floor(Math.random() * words.length)];
+    return words[Math.floor(Math.random() * words.length)].toUpperCase();
   });
 
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
@@ -55,7 +55,8 @@ const App = () => {
       <HangmanDrawing numberOfGuess={incorrectLetters.length} />
       <HangmanWord guessedLetters={guessedLetters} wordToGuess={wordToGuess} />
       <div className=" self-stretch">
-        <Keyboard />
+        <Keyboard activeLetters={guessedLetters.filter(letter => wordToGuess.includes(letter))} inactiveLetters={incorrectLetters} 
+        addGuessedLetter={addGuessedLetter} />
       </div>
     </div>
   );

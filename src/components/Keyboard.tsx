@@ -29,8 +29,17 @@ const KEYS = [
   "Y",
   "Z",
 ];
+type KeyboardProps = {
+  activeLetters: string[],
+  inactiveLetters: string[],
+  addGuessedLetter: (letter: string) => void
+}
 
-const Keyboard = () => {
+const Keyboard = ({
+  activeLetters,
+  inactiveLetters,
+  addGuessedLetter
+}: KeyboardProps) => {
   return (
     <div
       className="grid gap-2"
@@ -39,11 +48,20 @@ const Keyboard = () => {
       }}
     >
       {KEYS.map((key) => {
+        const isActive = activeLetters.includes(key);
+        const isInactive = inactiveLetters.includes(key);
+        console.log(isActive);
+        
         return (
           <button
+            onClick={() => addGuessedLetter(key)}
             key={key}
+            disabled={isInactive || isActive}
             className={`w-full border-black border-4 text-4xl p-2 font-bold cursor-pointer text-black aspect-square 
             ${style.btn}
+            ${isActive ? style.active : "" }
+            ${isInactive ? style.inactive : "" }
+
             `}
           >
             {key}

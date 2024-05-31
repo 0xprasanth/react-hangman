@@ -35,26 +35,22 @@ const RIGHT_LEG = (
   <div className="absolute w-[100px] h-[10px] bg-black  rotate-[60deg]  top-[200px] right-[-89px]  origin-bottom-left" />
 );
 const LEFT_LEG = (
-  <div className="absolute w-[100px] h-[10px] bg-black 
-  rotate-[-60deg]  top-[200px] right-[0px]  origin-bottom-right" />
+  <div
+    className="absolute w-[100px] h-[10px] bg-black 
+  rotate-[-60deg]  top-[200px] right-[0px]  origin-bottom-right"
+  />
 );
 
-const BODY_PARTS = [
-  HEAD, BODY,
-  RIGHT_HAND, LEFT_HAND,
-  RIGHT_LEG, LEFT_LEG
-]
+const BODY_PARTS = [HEAD, BODY, RIGHT_HAND, LEFT_HAND, RIGHT_LEG, LEFT_LEG];
 
 type HangmanDrawingProps = {
-  numberOfGuess: number
-}
+  numberOfGuess: number;
+};
 const HangmanDrawing = ({ numberOfGuess }: HangmanDrawingProps) => {
   // Static drawing
   return (
     <div className=" relative ">
-      {
-        BODY_PARTS.slice(0, numberOfGuess)
-      }
+      {BODY_PARTS.slice(0, numberOfGuess)}
       {/* h bar */}
       <div
         className=" absolute h-11 bg-black  top-0 right-0"
